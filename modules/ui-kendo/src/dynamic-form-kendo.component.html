@@ -47,7 +47,7 @@
 
 
     <kendo-dropdownlist *ngIf="model.type === 'SELECT' && !model.multiple"
-                        [data]="model.options"
+                        [data]="model.options.length ? model.options : (model.observableOptions | async)"
                         [disabled]="model.disabled"
                         [formControlName]="model.id"
                         [ngClass]="[model.cls.element.control, model.cls.grid.control]"
@@ -60,7 +60,7 @@
 
 
     <kendo-multiselect *ngIf="model.type === 'SELECT' && model.multiple"
-                       [data]="model.options"
+                       [data]="model.options.length ? model.options : (model.observableOptions | async)"
                        [disabled]="model.disabled"
                        [formControlName]="model.id"
                        [ngClass]="[model.cls.element.control, model.cls.grid.control]"
